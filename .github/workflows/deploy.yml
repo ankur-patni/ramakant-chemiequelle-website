@@ -27,26 +27,14 @@ jobs:
       - name: 🏗️ Build React app
         run: npm run build
 
-      - name: Debug SSH Secret
-        run: |
-          if [ -z "${{ secrets.HOSTINGER_SSH_KEY }}" ]; then
-            echo "SSH key secret is EMPTY"
-            exit 1
-          else
-            echo "SSH key secret exists"
-          fi
+      - name: Network Debug
+      run: |
+        echo "HOST=${{ secrets.HOSTINGER_HOST }}"
+        getent hosts ${{ secrets.HOSTINGER_HOST }} || true
 
-      - name: Validate SSH Key Format
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.HOSTINGER_SSH_KEY }}" > ~/.ssh/id_key
-          chmod 600 ~/.ssh/id_key
-
-          echo "First line:"
-          head -n 1 ~/.ssh/id_key
-
-          echo "Key validation:"
-          ssh-keygen -y -f ~/.ssh/id_key
+        timeout 15 bash -c "</dev/tcp/${{ secrets.HOSTINGER_HOST }}/22" \
+          && echo "PORT_22_OPEN" \
+          || echo "PORT_22_BLOCKED"
 
       - name: 📤 Upload build to server
         uses: appleboy/scp-action@v0.1.7
