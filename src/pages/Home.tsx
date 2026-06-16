@@ -37,7 +37,7 @@ export default function Home() {
               
               <div className="flex flex-wrap gap-4 pt-4">
                 <Link to="/quote" className="bg-rcq-teal hover:bg-rcq-teal-dark text-white px-8 py-4 rounded-full font-medium transition-all shadow-[0_0_20px_rgba(0,166,166,0.3)] hover:shadow-[0_0_30px_rgba(0,166,166,0.5)]">
-                  Request a Quote
+                  Request a Quote KP
                 </Link>
                 <Link to="/products" className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-full font-medium transition-all backdrop-blur-sm">
                   Explore Products
