@@ -27,6 +27,15 @@ jobs:
       - name: 🏗️ Build React app
         run: npm run build
 
+      - name: Debug SSH Secret
+        run: |
+          if [ -z "${{ secrets.HOSTINGER_SSH_KEY }}" ]; then
+            echo "SSH key secret is EMPTY"
+            exit 1
+          else
+            echo "SSH key secret exists"
+          fi
+
       - name: 📤 Upload build to server
         uses: appleboy/scp-action@v0.1.7
         with:
