@@ -33,7 +33,7 @@ jobs:
           host: ${{ secrets.HOSTINGER_HOST }}
           username: ${{ secrets.HOSTINGER_USER }}
           key: ${{ secrets.HOSTINGER_SSH_KEY }}
-          source: "build/*"
+          source: "dist/*"
           target: "/var/www/staging.ramakantchemieq.com"
 
       - name: 🔄 Restart Nginx
