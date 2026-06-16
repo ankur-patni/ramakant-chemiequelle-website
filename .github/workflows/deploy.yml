@@ -28,13 +28,13 @@ jobs:
         run: npm run build
 
       - name: Network Debug
-      run: |
-        echo "HOST=${{ secrets.HOSTINGER_HOST }}"
-        getent hosts ${{ secrets.HOSTINGER_HOST }} || true
+        run: |
+          echo "HOST=${{ secrets.HOSTINGER_HOST }}"
+          getent hosts ${{ secrets.HOSTINGER_HOST }} || true
 
-        timeout 15 bash -c "</dev/tcp/${{ secrets.HOSTINGER_HOST }}/22" \
-          && echo "PORT_22_OPEN" \
-          || echo "PORT_22_BLOCKED"
+          timeout 15 bash -c "</dev/tcp/${{ secrets.HOSTINGER_HOST }}/22" \
+            && echo "PORT_22_OPEN" \
+            || echo "PORT_22_BLOCKED"
 
       - name: 📤 Upload build to server
         uses: appleboy/scp-action@v0.1.7
