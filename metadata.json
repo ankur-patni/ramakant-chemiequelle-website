@@ -1,0 +1,8 @@
+{
+  "name": "Ramakant Chemiequelle",
+  "description": "Global B2B chemical sourcing, procurement, and export platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
