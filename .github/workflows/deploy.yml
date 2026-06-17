@@ -31,18 +31,18 @@ jobs:
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOSTINGER_HOST }}
-          username: ${{ secrets.HOSTINGER_USER }}
+          username: 'root' # Hardcoded to eliminate secret reading issues
           key: ${{ secrets.HOSTINGER_SSH_KEY }}
           timeout: 120s
           source: "dist/*"
           target: "/var/www/staging.ramakantchemieq.com"
-          strip_components: 1 # Prevents creating an extra 'dist' folder on your server
+          strip_components: 1
 
       - name: 🔄 Restart Nginx
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOSTINGER_HOST }}
-          username: ${{ secrets.HOSTINGER_USER }}
+          username: 'root' # Hardcoded to eliminate secret reading issues
           key: ${{ secrets.HOSTINGER_SSH_KEY }}
           timeout: 120s
           script: |
