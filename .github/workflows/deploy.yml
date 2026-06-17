@@ -3,7 +3,7 @@ name: Deploy React App
 on:
   push:
     branches:
-      - main   # change if your branch is different
+      - main
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -36,6 +36,7 @@ jobs:
           timeout: 120s
           source: "dist/*"
           target: "/var/www/staging.ramakantchemieq.com"
+          strip_components: 1 # Prevents creating an extra 'dist' folder on your server
 
       - name: 🔄 Restart Nginx
         uses: appleboy/ssh-action@v1.0.3
