@@ -1,38 +1,49 @@
-name: Debug Repository Secrets
+name: Deploy React App
 
 on:
   push:
     branches:
       - main
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
-  debug_secrets:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🔍 Check Secret Values
-        run: |
-          echo "=== STARTING SECRET DECRYPTION DEBUG ==="
-          
-          # 1. Check if the variables are empty or populated
-          if [ -z "${{ secrets.HOSTINGER_HOST }}" ]; then echo "❌ HOSTINGER_HOST is completely EMPTY"; else echo "✅ HOSTINGER_HOST contains data"; fi
-          if [ -z "${{ secrets.HOSTINGER_USER }}" ]; then echo "❌ HOSTINGER_USER is completely EMPTY"; else echo "✅ HOSTINGER_USER contains data"; fi
-          if [ -z "${{ secrets.HOSTINGER_SSH_KEY }}" ]; then echo "❌ HOSTINGER_SSH_KEY is completely EMPTY"; else echo "✅ HOSTINGER_SSH_KEY contains data"; fi
-          
-          echo "----------------------------------------"
-          echo "RAW UNMASKED VALUES BELOW:"
-          echo "----------------------------------------"
-          
-          # 2. Print values with spaces between characters to bypass GitHub's '***' masking filter
-          echo -n "HOSTINGER_HOST value: "
-          echo "${{ secrets.HOSTINGER_HOST }}" | sed 's/./& /g'
-          
-          echo -n "HOSTINGER_USER value: "
-          echo "${{ secrets.HOSTINGER_USER }}" | sed 's/./& /g'
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
 
-          echo "----------------------------------------"
-          # 3. Print the first 3 lines of your SSH key in Base64 format to check if it's formatted right
-          echo "HOSTINGER_SSH_KEY (First few lines in Base64 format):"
-          echo "${{ secrets.HOSTINGER_SSH_KEY }}" | head -n 3 | base64
-          
-          echo "=== DEBUG END ==="
+      - name: ⚙️ Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🏗️ Build React app
+        run: npm run build
+      
+      - name: 📤 Upload build to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOSTINGER_HOST }}
+          username: 'root' # Hardcoded to eliminate secret reading issues
+          key: ${{ secrets.HOSTINGER_SSH_KEY }}
+          timeout: 120s
+          source: "dist/*"
+          target: "/var/www/staging.ramakantchemieq.com"
+          strip_components: 1
+
+      - name: 🔄 Restart Nginx
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOSTINGER_HOST }}
+          username: 'root' # Hardcoded to eliminate secret reading issues
+          key: ${{ secrets.HOSTINGER_SSH_KEY }}
+          timeout: 120s
+          script: |
+            sudo systemctl restart nginx
