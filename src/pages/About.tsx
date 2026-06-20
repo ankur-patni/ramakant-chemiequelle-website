@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Target, Lightbulb, Shield, Globe } from 'lucide-react';
+import globalBusinessImg from '../assets/images/global_business_handshake_1781550318639.jpg';
 
 export default function About() {
   return (
@@ -32,7 +33,7 @@ export default function About() {
           </div>
           <div className="relative">
             <img 
-              src="https://images.unsplash.com/photo-1542615967-dfbd17dbb1f4?q=80&w=2670&auto=format&fit=crop" 
+              src={globalBusinessImg} 
               alt="Global Business" 
               className="rounded-2xl shadow-xl"
             />

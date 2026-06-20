@@ -107,7 +107,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-rcq-navy mb-1">Call / WhatsApp</h4>
-                    <p className="text-slate-600 text-sm">+91 XXXXX XXXXX</p>
+                    <p className="text-slate-600 text-sm">+91 85114 39259</p>
                   </div>
                 </div>
 
@@ -117,7 +117,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-rcq-navy mb-1">Email</h4>
-                    <p className="text-slate-600 text-sm">sales@ramakantchemiequelle.com</p>
+                    <p className="text-slate-600 text-sm">sales@ramakantchemieq.com</p>
                   </div>
                 </div>
 
@@ -127,7 +127,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-rcq-navy mb-1">Business Hours</h4>
-                    <p className="text-slate-600 text-sm">Monday - Saturday<br/>9:00 AM - 6:00 PM (IST)</p>
+                    <p className="text-slate-600 text-sm">24 x 7<br/>(Monday - Sunday)</p>
                   </div>
                 </div>
               </div>
@@ -138,7 +138,7 @@ export default function Contact() {
           <div className="lg:col-span-2">
             <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100">
               <h3 className="text-2xl font-bold text-rcq-navy mb-8">Send us a Message</h3>
-
+              
               {/* Success Alert */}
               {success && successMessage && (
                 <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800 animate-in slide-in-from-top">
@@ -351,8 +351,8 @@ export default function Contact() {
 
                 {/* Submit Button */}
                 <div className="pt-4">
-                  <button
-                    type="submit"
+                  <button 
+                    type="submit" 
                     disabled={isLoading}
                     className="w-full md:w-auto px-8 py-3 bg-rcq-teal hover:bg-rcq-teal-dark text-white rounded-lg font-medium transition-all duration-200 shadow-md disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >

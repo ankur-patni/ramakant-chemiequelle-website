@@ -3,14 +3,14 @@ import { Search, Filter, Download, ArrowRight } from 'lucide-react';
 
 const products = [
   { id: 1, name: "Sodium Hypochlorite", cas: "7681-52-9", category: "Water Treatment", desc: "Bleaching and disinfecting agent." },
-  { id: 2, name: "Citric Acid Anhydrous", cas: "77-92-9", category: "Food & Pharma", desc: "Acidifier, flavoring and chelating agent." },
-  { id: 3, name: "Hydrogen Peroxide", cas: "7722-84-1", category: "Industrial", desc: "Oxidizer, bleaching agent and antiseptic." },
+  { id: 2, name: "Citric Acid Anhydrous", cas: "77-92-9", category: "Food, Feed & Pharmaceuticals", desc: "Acidifier, flavoring and chelating agent." },
+  { id: 3, name: "Hydrogen Peroxide", cas: "7722-84-1", category: "Bulk Chemical Industries", desc: "Oxidizer, bleaching agent and antiseptic." },
   { id: 4, name: "Polyacrylamide (PAM)", cas: "9003-05-8", category: "Water Treatment", desc: "Flocculant for water purification." },
   { id: 5, name: "Caustic Soda Flakes", cas: "1310-73-2", category: "Industrial", desc: "Strong base for manufacturing processes." },
-  { id: 6, name: "Zinc Sulfate Heptahydrate", cas: "7446-20-0", category: "Agro Chemicals", desc: "Zinc supplement in animal feeds and fertilizers." },
+  { id: 6, name: "Rubber Accelerator MBT", cas: "149-30-4", category: "Paint & Rubber Chemicals", desc: "Primary accelerator for rubber vulcanization." },
 ];
 
-const categories = ["All", "Water Treatment", "Industrial", "Specialty", "Agro Chemicals", "Food & Pharma"];
+const categories = ["All", "Water Treatment", "Industrial", "Specialty", "Home & Personal Care", "Food, Feed & Pharmaceuticals", "Flavour & Fragrance", "Paint & Rubber Chemicals", "Bulk Chemical Industries"];
 
 export default function Products() {
   return (
@@ -65,9 +65,6 @@ export default function Products() {
                  <button className="flex items-center gap-2 text-sm text-slate-500 hover:text-rcq-navy transition-colors font-medium">
                    <Download size={16} /> TDS Form
                  </button>
-                 <Link to={`/quote?product=${encodeURIComponent(p.name)}`} className="text-rcq-teal font-medium flex items-center gap-1 hover:text-rcq-teal-dark transition-colors">
-                   Request Quote <ArrowRight size={16} />
-                 </Link>
               </div>
             </div>
           ))}

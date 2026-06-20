@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom';
 import { ShieldCheck, Globe, Users, Leaf, Shield, ArrowRight, CheckCircle2 } from 'lucide-react';
 import waterTreatmentImg from '../assets/images/water_treatment_facility_1781461303495.jpg';
 import industrialChemicalsImg from '../assets/images/industrial_chemicals_plant_1781461322775.jpg';
+import heroImg from '../assets/images/hero_chemical_plant_1781533156372.jpg';
+import specialtyImg from '../assets/images/specialty_chemicals_img_1781533175180.jpg';
+import foodPharmaImg from '../assets/images/food_pharma_customer_1781550101209.jpg';
+import homePersonalCareImg from '../assets/images/home_care_customer_1781550084518.jpg';
+import flavourFragranceImg from '../assets/images/flavour_fragrance_customer_1781550116302.jpg';
+import paintRubberImg from '../assets/images/paint_rubber_customer_1781550130681.jpg';
+import bulkChemicalsImg from '../assets/images/bulk_chemicals_customer_1781550144600.jpg';
 
 export default function Home() {
   return (
@@ -32,13 +39,10 @@ export default function Home() {
               </h1>
               <p className="text-lg text-slate-300 max-w-lg leading-relaxed">
                 Connecting buyers with reliable manufacturers and suppliers worldwide. 
-                <span className="block mt-2 font-medium text-white/80">Specialty • Water Treatment • Industrial • Agro</span>
+                <span className="block mt-2 font-medium text-white/80">Specialty • Water Treatment • Industrial • Home & Personal Care</span>
               </p>
               
               <div className="flex flex-wrap gap-4 pt-4">
-                <Link to="/quote" className="bg-rcq-teal hover:bg-rcq-teal-dark text-white px-8 py-4 rounded-full font-medium transition-all shadow-[0_0_20px_rgba(0,166,166,0.3)] hover:shadow-[0_0_30px_rgba(0,166,166,0.5)]">
-                  Request a Quote KP
-                </Link>
                 <Link to="/products" className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-full font-medium transition-all backdrop-blur-sm">
                   Explore Products
                 </Link>
@@ -51,25 +55,11 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative hidden lg:block"
             >
-               <img 
-                  src="https://images.unsplash.com/photo-1614935151651-0bea6508abb0?q=80&w=2670&auto=format&fit=crop" 
+                <img 
+                  src={heroImg} 
                   alt="Chemical Laboratory Facility" 
                   className="rounded-2xl shadow-2xl w-full object-cover h-[500px]"
                 />
-                {/* Floating badge */}
-                <motion.div 
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ repeat: Infinity, duration: 4 }}
-                  className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl flex items-center gap-4 border border-slate-100"
-                >
-                  <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600">
-                    <ShieldCheck size={24} />
-                  </div>
-                  <div>
-                    <p className="text-sm text-slate-500 font-medium">ISO Certified</p>
-                    <p className="text-rcq-navy font-bold">100% Quality Assured</p>
-                  </div>
-                </motion.div>
             </motion.div>
           </div>
         </div>
@@ -123,14 +113,16 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { name: "Water Treatment", desc: "Cooling water, boiler, RO chemicals.", img: waterTreatmentImg },
               { name: "Industrial Chemicals", desc: "Solvents, acids, alkalis.", img: industrialChemicalsImg },
-              { name: "Specialty Chemicals", desc: "High-performance formulations.", img: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2670&auto=format&fit=crop" },
-              { name: "Agro Chemicals", desc: "Crop protection and nutrients.", img: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=2670&auto=format&fit=crop" },
-              { name: "Food & Pharma", desc: "Approved raw materials & ingredients.", img: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=2669&auto=format&fit=crop" },
-              { name: "Mining & Process", desc: "Industrial process solutions.", img: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?q=80&w=2574&auto=format&fit=crop" },
+              { name: "Specialty Chemicals", desc: "High-performance formulations.", img: specialtyImg },
+              { name: "Home & Personal Care", desc: "Cosmetics and detergent raw materials.", img: homePersonalCareImg },
+              { name: "Food, Feed & Pharmaceuticals", desc: "Approved raw materials & ingredients.", img: foodPharmaImg },
+              { name: "Flavour & Fragrance", desc: "Aromatic compounds & essential oils.", img: flavourFragranceImg },
+              { name: "Paint & Rubber Chemicals", desc: "Industrial processing materials.", img: paintRubberImg },
+              { name: "Bulk Chemical Industries", desc: "Large scale chemical supply.", img: bulkChemicalsImg },
             ].map((cat, idx) => (
               <motion.div 
                 key={idx}
@@ -162,51 +154,6 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
-
-      {/* Industries */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto max-w-7xl px-4 text-center">
-            <h2 className="text-3xl font-bold text-rcq-navy mb-4">Industries We Serve</h2>
-            <div className="w-20 h-1 bg-rcq-teal mx-auto rounded-full mb-12"></div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                "Water Treatment", "Pharmaceuticals", "Food Processing", "Agriculture", 
-                "Textiles", "Paints & Coatings", "Mining", "Oil & Gas"
-              ].map((ind, idx) => (
-                <motion.div 
-                  key={idx}
-                  whileHover={{ scale: 1.05 }}
-                  className="bg-rcq-gray rounded-xl p-6 flex items-center justify-center text-center font-medium text-rcq-navy border border-slate-200 hover:border-rcq-teal transition-colors cursor-default"
-                >
-                  {ind}
-                </motion.div>
-              ))}
-            </div>
-        </div>
-      </section>
-
-      {/* Stats Strip */}
-      <section className="bg-rcq-navy py-16 text-white relative overflow-hidden">
-         <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, white 1px, transparent 0)", backgroundSize: "32px 32px" }}></div>
-         <div className="container mx-auto max-w-7xl px-4 relative z-10">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
-              {[
-                { val: "15+", label: "Years Experience" },
-                { val: "500+", label: "Happy Customers" },
-                { val: "1000+", label: "Products" },
-                { val: "35+", label: "Countries Served" },
-                { val: "99%", label: "On-Time Delivery" },
-                { val: "24/7", label: "Support" },
-              ].map((stat, idx) => (
-                <div key={idx} className="space-y-2">
-                  <div className="text-4xl lg:text-5xl font-bold text-rcq-teal">{stat.val}</div>
-                  <div className="text-sm text-slate-300 font-medium uppercase tracking-wider">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-         </div>
       </section>
 
       {/* Sourcing Process */}
@@ -248,29 +195,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto max-w-7xl px-4">
-          <h2 className="text-3xl font-bold text-rcq-navy mb-12 text-center">What Our Clients Say</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { role: "Procurement Manager", quote: "Reliable supplier with excellent communication and on-time delivery across multiple continents." },
-              { role: "Water Treatment Company", quote: "Consistent quality and strong technical support. They handle our complex sourcing needs flawlessly." },
-              { role: "Manufacturing Company", quote: "Our trusted sourcing partner for specialty chemicals. They significantly reduced our procurement stress." },
-            ].map((test, idx) => (
-              <div key={idx} className="bg-rcq-gray p-8 rounded-2xl relative">
-                <div className="text-rcq-teal mb-4">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                  </svg>
-                </div>
-                <p className="text-slate-600 mb-6 italic">"{test.quote}"</p>
-                <div className="font-bold text-rcq-navy">{test.role}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Testimonials (Hidden) */}
 
       {/* CTA */}
       <section className="py-24 bg-rcq-teal text-white text-center">
@@ -278,9 +203,6 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-6">Looking for Reliable Chemical Sourcing?</h2>
           <p className="text-xl mb-10 text-white/90">Get competitive quotations from verified global suppliers handled by experts.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link to="/quote" className="bg-rcq-navy hover:bg-rcq-navy-light text-white px-8 py-4 rounded-full font-medium transition-all shadow-lg text-lg">
-              Request Quote
-            </Link>
             <Link to="/contact" className="bg-white hover:bg-slate-50 text-rcq-navy px-8 py-4 rounded-full font-medium transition-all shadow-lg text-lg border border-transparent">
               Contact Sales
             </Link>
